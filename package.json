@@ -1,0 +1,30 @@
+{
+  "name": "kiaUser-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ichsan2706/kiaUser-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ichsan2706/kiaUser-server/issues"
+  },
+  "homepage": "https://github.com/ichsan2706/kiaUser-server#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.2.2"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0"
+  }
+}
