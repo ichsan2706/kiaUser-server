@@ -25,10 +25,10 @@ class ControllerUser{
                         const access_token = jwt.sign(payload, process.env.JWT_SECRET)
                         res.status(200).json({message: "login success", access_token})
                     } else {
-                        res.status(401).json({error:"username/password is wrong"})
+                        res.status(401).json({error:"Phone number/password is wrong"})
                     }
                 } else {
-                    res.status(401).json({error:"email not registered"})
+                    res.status(401).json({error:"Phone number not registered"})
                 }
             })
             .catch((error) => {

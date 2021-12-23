@@ -17,8 +17,9 @@ class modelsUser {
     }
     static login(phoneNumber){
         return new Promise ((resolve, reject) => {
-            getDb().collection("users").findOne({phoneNumber: phoneNumber})
+            getDb().collection("parents").findOne({phoneNumber: phoneNumber})
             .then((data) => {
+                console.log(data);
                 resolve(data)
             })
             .catch((error) => {
