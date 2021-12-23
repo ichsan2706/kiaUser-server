@@ -15,6 +15,17 @@ class modelsUser {
             })
         })
     }
+    static login(phoneNumber){
+        return new Promise ((resolve, reject) => {
+            getDb().collection("users").findOne({phoneNumber: phoneNumber})
+            .then((data) => {
+                resolve(data)
+            })
+            .catch((error) => {
+                reject(error)
+            })
+        })
+    }
 }
 
 module.exports = modelsUser
