@@ -3,6 +3,9 @@ const controllerUser = require('../controllers/controller-user')
 
 
 router.get('/', controllerUser.getParents)
+router.get('/checkLogin/:email', controllerUser.checkLogin)
+
+module.exports = router
 
 
 

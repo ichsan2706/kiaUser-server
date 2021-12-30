@@ -15,6 +15,18 @@ class modelsUser {
             })
         })
     }
+    static checkLogin(email) {
+        return new Promise((resolve, reject) => {
+            getDb().collection("parents").findOne({ email })
+                .then((parent) => {
+                    console.log(parent);
+                    resolve(parent)
+                })
+                .catch(error => {
+                    reject(error)
+                })
+        })
+    }
 }
 
 module.exports = modelsUser
