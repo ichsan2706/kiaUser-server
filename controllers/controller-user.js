@@ -12,9 +12,9 @@ class ControllerUser{
             res.status(500).json(error)
         })
     }
-    static checkLogin(req, res, next) {
+    static getProfile(req, res, next) {
         console.log(req.params.email);
-        modelsUser.checkLogin(req.params.email)
+        modelsUser.getProfile(req.params.email)
         .then((result) => {
             res.status(200).json(result)
         }).catch((err) => {

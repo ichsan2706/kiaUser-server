@@ -15,7 +15,7 @@ class modelsUser {
             })
         })
     }
-    static checkLogin(email) {
+    static getProfile(email) {
         return new Promise((resolve, reject) => {
             getDb().collection("parents").findOne({ email })
                 .then((parent) => {
