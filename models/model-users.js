@@ -27,6 +27,18 @@ class modelsUser {
                 })
         })
     }
+    static register(data) {
+        return new Promise((resolve, reject) => {
+            getDb().collection("parents").insert(data)
+                .then((user) => {
+                    console.log(user);
+                    resolve(user)
+                })
+                .catch(error => {
+                    reject(error)
+                })
+        })
+    }
 }
 
 module.exports = modelsUser

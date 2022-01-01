@@ -1,5 +1,6 @@
 const { getDb } = require('../config/mongoDB');
 const modelsUser = require('../models/model-users')
+const {hashPassword} = require('../helpers/bcrypt')
 
 class ControllerUser{
     static getParents(req, res, next) {
@@ -25,8 +26,8 @@ class ControllerUser{
     static register(req, res) {
         let {nik, name, email, pob, dob, gender, phoneNumber, address, password} = req.body
     
+        console.log(req.body, 'data body');
         password = hashPassword(password)
-        
         let data = {nik, name, email, pob, dob, gender, phoneNumber, address, password}
     
         modelsUser.register(data)
