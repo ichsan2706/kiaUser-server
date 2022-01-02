@@ -1,6 +1,7 @@
 const { getDb } = require('../config/mongoDB');
 const modelsUser = require('../models/model-users')
-const {hashPassword} = require('../helpers/bcrypt')
+const {hashPassword, compareHash} = require('../helpers/bcrypt')
+const jwt = require('jsonwebtoken')
 
 class ControllerUser{
     static getParents(req, res, next) {
@@ -40,24 +41,24 @@ class ControllerUser{
     }
 
     static login(req, res, next) {
-        let {phoneNumber, password} = req.body
-        modelsUser.login(phoneNumber)
+        let {email, password} = req.body
+        modelsUser.login(email)
             .then((user) => {
                 if(user) {
                     if(compareHash(password, user.password)) {
-                        let payload = {
-                            id: user._id
-                        }
-                        const access_token = jwt.sign(payload, process.env.JWT_SECRET)
-                        res.status(200).json({message: "login success", access_token})
+                        const access_token = jwt.sign(user, process.env.JWT_SECRET)
+                        res.status(200).json({access_token, profile:user})
                     } else {
+                        console.log(`masuk else 1`);
                         res.status(401).json({error:"Phone number/password is wrong"})
                     }
-                } else {
+                } else { 
+                    console.log(`masuk else 2`);
                     res.status(401).json({error:"Phone number not registered"})
                 }
             })
             .catch((error) => {
+                console.log(error);
                 res.status(500).json({error: error})
             })
     }

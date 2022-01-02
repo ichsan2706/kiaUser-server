@@ -39,6 +39,21 @@ class modelsUser {
                 })
         })
     }
+
+    static login(email) {
+        console.log(email, 'model');
+        return new Promise((resolve, reject) => {
+            getDb().collection("parents").findOne({email: email})
+                .then((user) => {
+                    // console.log(user);
+                    resolve(user)
+                })
+                .catch((error) => {
+                    console.log(error);
+                    reject(error)
+                })
+        })
+    }
 }
 
 module.exports = modelsUser
