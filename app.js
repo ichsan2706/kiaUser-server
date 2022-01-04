@@ -1,7 +1,7 @@
 if(process.env.NODE_ENV !== 'production') require('dotenv').config()
 const express = require('express')
 const app = express()
-const port = 4001
+const PORT = 4001
 const cors = require('cors')
 const routes = require('./routes/index')
 const {connectToServer} = require('./config/mongoDB')
@@ -14,8 +14,8 @@ app.use(routes)
 
 connectToServer()
 .then(() => {
-    app.listen(port, () => {
-        console.log(`Server user kia is listening to ${port}`);
+    app.listen(PORT, () => {
+        console.log(`Server user kia is listening to ${PORT}`);
     })
 })
 
