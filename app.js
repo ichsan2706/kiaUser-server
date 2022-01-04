@@ -12,6 +12,7 @@ app.use(express.json())
 
 app.use(routes)
 
+
 connectToServer()
 .then(() => {
     app.listen(PORT, () => {
